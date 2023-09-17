@@ -1,0 +1,124 @@
+@import url('./reset.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+footer {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: #000;
+    color: white;
+    padding: 3rem 0 1rem 00;
+    margin-top: 2.5rem;
+
+    gap: 3rem 0;
+}
+
+footer .wrapper-footer {
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+    
+    align-content: flex-start;
+    align-items: center;
+    padding: 0 1.2rem;
+}
+
+footer p:nth-child(1){
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+footer p {
+    font-size: 1rem;
+
+} 
+
+.footer-component {
+    width: 18.75rem;
+}
+
+
+.visit-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 2rem;
+}
+
+.social-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.25rem;
+}
+
+.social-media div {
+    display: flex;
+    width: inherit;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.social-media svg {
+    width: 2rem;
+    height: auto;
+}
+
+
+@media (max-width:1024px) {
+    .footer-component {
+        width: 12rem;
+    }
+}
+
+@media (max-width:768px) {
+    footer {
+        gap: 1rem;
+    }
+
+    footer .wrapper-footer {
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    footer p:nth-child(1){
+        font-size: 1.5rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    footer .social-media {
+        align-items: center;
+    }
+
+    .footer-component {
+        width: 11rem;
+    }
+
+    .visit-us {
+        gap: .5rem;
+    }
+
+
+}
+
+@media (max-width:480px) {
+    footer p {
+        font-size: .9rem;
+    } 
+
+    footer .wrapper-footer {
+        justify-content: space-around;
+    }
+}
