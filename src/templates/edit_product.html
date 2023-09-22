@@ -1,0 +1,63 @@
+{% extends 'menu.html' %}
+
+{% block stylesheets %}
+    {{super()}}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit-products.css') }}">
+{% endblock %}
+
+{% block content %}
+    <h2 class="h2">Editar Producto</h2>
+
+    <table class="table table-bordered">
+    <thead>
+        <tr>
+        <th>Nombre</th>
+        <th>Categoría</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Imagen</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if product %}
+        <tr>
+            <td>{{ product.product }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.stock }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                <img src="{{ product.picture }}" alt="Imagen del producto">
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">El producto no existe</td>
+        </tr>
+        {% endif %}
+    </tbody>
+    </table>
+
+    <form action="/update_product/{{ product.id}}" method="post">
+        <input type="hidden" name="id" value="{{ product.id }}">
+        <label for="product">Nombre:</label>
+        <input type="text" name="product" id="product" value="{{ product.product }}" placeholder="Nombre" required>
+
+        <label for="category">Categoría:</label>
+        <select name="category" id="category" required>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.category_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="price">Precio:</label>
+        <input type="number" name="price" id="price" value="{{ product.price }}" placeholder="Precio" required>
+
+        <label for="stock">Stock:</label>
+        <input type="number" name="stock" id="stock" value="{{ product.stock }}" placeholder="Stock" required>
+
+        <label for="picture">URL de imagen:</label>
+        <input type="text" name="picture" id="picture" value="{{ product.picture }}" placeholder="URL de imagen" required>
+
+        <input type="submit" value="Guardar">
+    </form>
+{% endblock %}

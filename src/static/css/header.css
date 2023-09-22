@@ -68,3 +68,14 @@ header svg{
     height:2em;
     fill:white;
 }
+
+.flash {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #205da0;
+    color: white;
+}

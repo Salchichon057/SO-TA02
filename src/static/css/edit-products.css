@@ -1,0 +1,79 @@
+.h2 {
+  color: #0f65ae;
+  font-size: 3rem;
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+input {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+input:focus {
+  border-color: #2867B2;
+}
+
+label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="submit"] {
+  background-color: #2867B2;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #205994;
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
+td {
+  padding: 10px;
+}
+
+td img {
+  max-width: 5rem;
+}
+
+
+select {
+  width: 100%;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+select:focus {
+  border-color: #2867B2;
+}

@@ -1,0 +1,44 @@
+{% extends 'menu.html' %}
+
+{% block stylesheets %}
+    {{super()}}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/table.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="wrapper">
+        <h2>Tabla de Productos</h2>
+        <a href="{{ url_for('products.add_product') }}" class="button">Agregar Producto</a>
+
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Stock</th>
+                <th>Precio</th>
+                <th>Imagen</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in dataset %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ data.product }}</td>
+                    <td>{{ data.category }}</td>
+                    <td>{{ data.stock }}</td>
+                    <td>S/.{{ data.price }}</td>
+                    <td><img src="{{ data.picture }}" alt="Imagen del producto"></td>
+                    <td class="up-dt">                        
+                        <a href="/edit_product/{{data.id}}" class="button">Editar</a>
+                        <a href="/delete_product/{{data.id}}" class="button">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

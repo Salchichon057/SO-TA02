@@ -1,33 +1,22 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
-
-from flask_mysqldb import MySQL
-
-
-from flask_wtf import FlaskForm
-from wtforms.fields import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired
+from flask import render_template, request, redirect, url_for, flash, session, jsonify
+from database import mysql
+from app import app
+from src.products import products
 
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+app.register_blueprint(products)
 
-app.config['MYSQL_HOST'] = '20.168.118.97'
-app.config['MYSQL_USER'] = 'digitronik'
-app.config['MYSQL_PASSWORD'] = 'digitronik'
-app.config['MYSQL_DB'] = 'digitronikDB'
-
-# app.config['MYSQL_HOST'] = 'localhost'
-# app.config['MYSQL_USER'] = 'root'
-# app.config['MYSQL_PASSWORD'] = 'root'
-# app.config['MYSQL_DB'] = 'test'
-mysql = MySQL(app)
-
-app.config['ENV'] = 'development'
-
-@app.route('/home')
+@app.route("/")
 def index():
+    response  = app.make_response(redirect('/home'))
+    return response
+
+@app.route('/home', methods=['GET', 'POST'])
+def cards():
     cur = mysql.connection.cursor()
     cur.execute("""
         SELECT 
+		p.id as id,
         p.product_name as product,
         c.category_name as category,
         p.stock as stock,
@@ -38,11 +27,30 @@ def index():
         ON p.Category_id = c.id
     """
     )
-    # cur.execute('SELECT * FROM products')
     data = cur.fetchall()
-    print(data)
-    
-    return render_template('cards.html', dataset=data)
+    # print(data)
+    return render_template('landing.html', dataset=data)
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM customer WHERE email = %s AND password = %s', (email, password))
+        user = cursor.fetchone()
+
+        if user is not None:
+            flash('Inicio de sesión exitoso')
+            return redirect('/view_products')
+        else:
+            flash('Credenciales incorrectas')
+            return redirect('/login')
+
+    return render_template('login.html')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

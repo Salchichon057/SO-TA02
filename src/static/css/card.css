@@ -11,14 +11,6 @@
     --footer-color: #000;
 }
 
-.container-form {
-    min-height: calc(100vh - 100px);
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-}
-
 .h2 {
     color: var(--text-color);
     margin: 5rem 0 2rem 0;

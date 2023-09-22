@@ -1,0 +1,35 @@
+{% extends 'menu.html' %}
+
+{% block stylesheets %}
+    {{super()}}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add-product.css') }}">
+{% endblock %}
+
+{% block content %}
+<h2 class="h2">Agregar Producto</h2>
+<form action="{{url_for('products.add_product')}}" method="post">
+    <label for="product">Nombre:</label>
+    <input type="text" name="product" id="product" placeholder="Nombre" required>
+
+    <!-- <label for="category">Categoría:</label>
+    <input type="text" name="category" id="category" placeholder="Categoría" required> -->
+
+    <label for="category">Categoría:</label>
+    <select name="category" id="category" required>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.category_name }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="price">Precio:</label>
+    <input type="number" name="price" id="price" placeholder="Precio" required>
+
+    <label for="stock">Stock:</label>
+    <input type="number" name="stock" id="stock" placeholder="Stock" required>
+
+    <label for="picture">URL de imagen:</label>
+    <input type="text" name="picture" id="picture" placeholder="URL de imagen" required>
+
+    <input type="submit" value="Guardar">
+</form>
+{% endblock %}

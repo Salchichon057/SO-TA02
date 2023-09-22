@@ -46,3 +46,11 @@ button {
        -moz-appearance: none;
             appearance: none;
 }
+
+.container-form {
+    min-height: calc(100vh - 100px);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

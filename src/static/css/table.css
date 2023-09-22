@@ -1,0 +1,95 @@
+.wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5rem 0;
+}
+
+.wrapper h2 {
+    font-size: 3rem;
+    color: #0f65ae;
+    font-weight: 500;
+}
+
+.button {
+    width: 12rem;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+
+    text-align: center;
+    color: #000;
+    font-weight: 400;
+    font-size: 1rem;
+    cursor: pointer;
+
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.button:hover {
+    background-color: #0f65ae;
+    color: #fff;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    color: #333;
+    font-family: sans-serif;
+}
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+
+    font-size: 1rem;
+}
+
+th {
+    color: #0f65ae;
+    border-bottom: 1.2px solid #0f65ae;
+}
+
+td img {
+    max-width: 5rem;
+}
+
+.up-dt {
+    height: inherit;
+    display: flex;
+    flex-flow:column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.up-dt a {
+    width: 80%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    color: #000;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.up-dt a:hover {
+    background-color: #0f65ae;
+    color: #fff;
+}
+
+@media (max-width: 576px) {
+    th, td {    
+        font-size: .7rem;
+    }
+}
