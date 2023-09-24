@@ -23,8 +23,6 @@ def menu():
     )
     data = cur.fetchall()
     
-    print(data)
-    
     return render_template('data-table.html', dataset=data)
 
 @products.route('/add_product', methods=['GET', 'POST'])
