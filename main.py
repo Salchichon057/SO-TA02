@@ -38,11 +38,10 @@ def login():
         password = request.form['password']
 
         cursor = mysql.connection.cursor()
-        cursor.execute('SELECT * FROM customer WHERE email = %s AND password = %s', (email, password))
+        cursor.execute('SELECT * FROM Customer WHERE email = %s AND password = %s', (email, password))
         user = cursor.fetchone()
 
         if user is not None:
-            flash('Inicio de sesión exitoso')
             return redirect('/view_products')
         else:
             flash('Credenciales incorrectas')

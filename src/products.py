@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, flash, url_for
+from flask import Blueprint, render_template, request, redirect,  url_for
 from database import mysql
 import random
 
@@ -30,7 +30,7 @@ def menu():
 @products.route('/add_product', methods=['GET', 'POST'])
 def add_product():
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT id, category_name, description FROM digitronikdb.category")
+    cursor.execute("SELECT id, category_name, description FROM digitronikDB.Category")
     data = cursor.fetchall()
     
     if request.method == 'POST':
@@ -53,7 +53,6 @@ def add_product():
         mysql.connection.commit()
         #Close connection
         cur.close()
-        flash('Product Created', 'success')
         return redirect(url_for('products.menu'))
     return render_template('add_product.html', categories=data )
 
@@ -75,12 +74,11 @@ def get_product(id):
     """, [id])
     
     cursor = mysql.connection.cursor()
-    cursor.execute("SELECT id, category_name, description FROM digitronikdb.category")
+    cursor.execute("SELECT id, category_name, description FROM digitronikDB.Category")
     category_data = cursor.fetchall()
     
     data = cur.fetchall()
     cur.close()
-    print(data[0])
     return render_template('edit_product.html', product=data[0], categories=category_data)
 
 @products.route('/update_product/<string:id>', methods=['POST'])
